@@ -3,7 +3,7 @@
 import os
 
 import numpy
-import fastfunc
+# import fastfunc
 
 from .base import (
     _base_mesh,
@@ -190,7 +190,8 @@ class MeshTri(_base_mesh):
                 self.create_edges()
 
             self._ce_ratios = numpy.zeros(len(self.edges["nodes"]))
-            fastfunc.add.at(self._ce_ratios, self.cells["edges"].T, self.ce_ratios)
+            numpy.add.at(self._ce_ratios, self.cells["edges"].T, self.ce_ratios)
+            # fastfunc.add.at(self._ce_ratios, self.cells["edges"].T, self.ce_ratios)
             self._interior_ce_ratios = self._ce_ratios[
                 ~self.is_boundary_edge_individual
             ]
